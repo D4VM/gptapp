@@ -3,7 +3,6 @@ from pydantic import BaseModel
 
 
 class SProduct(BaseModel):
-    id: ObjectId
     category: str
     title: str
     description: str

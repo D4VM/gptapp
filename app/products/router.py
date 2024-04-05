@@ -1,12 +1,13 @@
 from fastapi import APIRouter
-from app.products.schemas import SProduct
-
+from app.products.models import ProductModel
+from app.products.services import ProductService
 router = APIRouter(
     prefix='/products',
     tags=['Products']
 )
 
 
-@router.get('', response_model=SProduct)
-def get_all_products():
-    pass
+@router.post('/add')
+def add_product(product: ProductModel):
+    pr = ProductService.add_one_product(product)
+    return pr
